@@ -11,6 +11,7 @@ const auth = require("./auth_jwt");
 
 const app = express();
 const database = new sqlite3.Database("./db.db");
+const port = process.env.PORT || 4000;
 
 const saltRounds = Math.floor(Math.random() * 7) + 5;
 
@@ -263,6 +264,6 @@ app.post(
   graphqlHTTP({ schema: schema, rootValue: root, graphiql: false })
 );
 
-app.listen(4000, () => {
+app.listen(port, () => {
   console.log("GraphQL server running at http://localhost:4000.");
 });
